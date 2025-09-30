@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ शुभ दीपावली ✨</title>
+
+<!-- Open Graph & Twitter Card -->
+<meta property="og:title" content="✨ शुभ दीपावली  ✨ — हार्दिक शुभकामनाएँ">
+<meta property="og:description" content="माँ लक्ष्मी के पावन पर्व की हार्दिक शुभकामनाएँ — इसे अपने परिवार और मित्रों के साथ शेयर करें!">
+<meta property="og:image" content="https://mata-5dmq.onrender.com/navratri-og.jpg">
+<meta property="og:url" content="https://mata-5dmq.onrender.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="✨ शुभ दीपावली ✨">
+<meta name="twitter:description" content="अपना नाम डालकर शुभकामना शेयर करें 🎉">
+<meta name="twitter:image" content="https://mata-5dmq.onrender.com/preview.jpg">
+<meta name="description" content="अपना नाम डालकर माँ लक्ष्मी के पावन पर्व की शुभकामनाएँ दोस्तों और परिवार के साथ शेयर करें।">
+<meta name="theme-color" content="#1e1e2f">
+
+<style>
+:root{
+  --bg1:#1e1e2f; --accent:#ffcc00; --card:#0b0b10;
+}
+*{box-sizing:border-box;}
+html,body{
+  height:100%; margin:0; padding:0;
+  font-family: "Noto Sans Devanagari", Arial, sans-serif;
+  background: radial-gradient(circle at bottom, var(--bg1), #000);
+  color:#fff;
+}
+.container{
+  max-width:420px; margin:0 auto; padding:20px;
+  min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:flex-start; gap:16px;
+  position:relative; z-index:1;
+}
+h1{
+  font-size:34px; margin:0; color:var(--accent);
+  text-shadow:0 3px 12px rgba(0,0,0,0.6); text-align:center;
+  margin-top:16px;
+}
+.img-box{
+  width:100%; background:var(--card); border-radius:12px; padding:6px;
+  box-shadow:0 6px 24px rgba(0,0,0,0.6); border:4px solid gold;
+}
+.img-box img{display:block; width:100%; height:auto; border-radius:8px;}
+#greeting{
+  font-size:16px; margin-top:6px; text-align:center;
+}
+input#name{
+  width:90%; padding:14px; border-radius:12px; border:none;
+  font-size:16px; text-align:center; background:#111; color:#fff;
+  outline:none; margin-top:-97px;
+}
+.actions{width:100%; display:flex; flex-direction:column; gap:12px; align-items:center; margin-top:10px;}
+.main-share-btn{
+  width:100%; background:linear-gradient(45deg,#ff512f,#dd2476); border:none;
+  padding:14px; border-radius:50px; font-size:16px; font-weight:700;
+  cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,0.6); transition:0.2s;
+}
+.main-share-btn:hover{transform:translateY(-2px);}
+
+.share-btns{display:flex; flex-direction:column; gap:10px; width:100%; margin-top:8px;}
+.share-option{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 16px; border-radius:12px; text-decoration:none;
+  color:#fff; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  transition:0.2s;
+}
+.share-option:hover{opacity:0.9; transform:scale(1.02);}
+.whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);}
+.telegram{background:linear-gradient(135deg,#0088cc,#00bfff);}
+.facebook{background:linear-gradient(135deg,#1877f2,#0e5aa7);}
+.twitter{background:linear-gradient(135deg,#1da1f2,#0d8ddb);}
+
+.utility-row{display:flex; gap:8px; width:100%; margin-top:10px;}
+.copy-btn, .download-btn{
+  flex:1; padding:12px; border-radius:12px; border:none;
+  background:rgba(255,255,255,0.06); color:#fff; font-weight:700; cursor:pointer;
+  transition:0.2s;
+}
+.copy-btn:hover, .download-btn:hover{opacity:0.85; transform:scale(1.02);}
+
+#thank{display:none; margin-top:8px; font-weight:700; color:#ffefc2; text-shadow:0 0 8px #ffcc00; text-align:center; }
+#adBanner{
+  margin-top:16px; width:100%; display:flex; flex-direction:column;
+  gap:12px; align-items:center;
+}
+#fireworks{position:fixed; inset:0; z-index:0; pointer-events:none;}
+small{opacity:0.8; margin-top:12px; text-align:center; display:block;}
+@media (max-width:420px){ h1{font-size:28px} input#name{font-size:15px;} }
+</style>
+</head>
+<body>
+
+<canvas id="fireworks" aria-hidden="true"></canvas>
+
+<div class="container" role="main">
+  <h1>✨ शुभ दीपावली ✨</h1>
+  <div class="img-box">
+    <img src="ram.jpeg" alt="माँ लक्ष्मी - दीपावली" id="heroImg">
+  </div>
+
+  <div id="greeting" aria-live="polite"></div>
+  <div id="thank">धन्यवाद ✨</div>
+
+  <input id="name" placeholder="यहाँ अपना नाम लिखें" aria-label="नाम" />
+
+  <div class="actions">
+    <button id="playBtn" class="main-share-btn" onclick="toggleAudio()">▶ Play Music</button>
+    <button id="shareToggle" class="main-share-btn" onclick="toggleShare()">🔗 शेयर करें</button>
+
+    <div id="shareArea" style="display:none; width:100%;">
+      <div class="share-btns" id="shareBtns">
+        <a id="whatsapp" class="share-option whatsapp" target="_blank" rel="noopener">WhatsApp <span>📱</span></a>
+        <a id="telegram" class="share-option telegram" target="_blank" rel="noopener">Telegram <span>✈️</span></a>
+        <a id="facebook" class="share-option facebook" target="_blank" rel="noopener">Facebook <span>📘</span></a>
+        <a id="twitter" class="share-option twitter" target="_blank" rel="noopener">Twitter <span>🐦</span></a>
+      </div>
+
+      <!-- Ads Section -->
+      <div id="adBanner">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '49c2ded011a6c6b629fe808a6d505741',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 320,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/49c2ded011a6c6b629fe808a6d505741/invoke.js" async></script>
+
+        <div style="width:100%; text-align:center;">
+          <script src="https://fpyf8.com/88/tag.min.js" data-zone="174787" async data-cfasync="false"></script>
+        </div>
+      </div>
+
+      <div class="utility-row">
+        <button id="copyBtn" class="copy-btn" onclick="copyLink()">Copy link</button>
+        <a id="downloadStory" class="download-btn" download="navratri-story.jpg">Download Story</a>
+      </div>
+    </div>
+  </div>
+
+  <audio id="myAudio" preload="none">
+    <source src="audio/ram.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <small>Share करके अपने मित्रों को “क्योंकि खुशियों का त्योहार है”✨</small>
+</div>
+
+<script>
+// Greeting & sharing
+function getParam(name){ try{ return new URL(window.location.href).searchParams.get(name); }catch(e){ return null; } }
+const fromParam = getParam("from");
+if(fromParam){
+  const safe = decodeURIComponent(fromParam).replace(/</g,"&lt;");
+  document.getElementById("greeting").innerHTML = `<b>${safe}</b> की ओर से दीपावली की हार्दिक शुभकामनाएँ 🎉`;
+  document.getElementById("thank").style.display = "block";
+}
+
+function buildShareLink(name){
+  const encoded = encodeURIComponent(name || "मित्र");
+  const base = `${window.location.origin}${window.location.pathname}?from=${encoded}`;
+  const utm = `utm_source=share&utm_medium=referral&utm_campaign=navratri`;
+  return `${base}&${utm}`;
+}
+
+function updateLinks(){
+  const name = document.getElementById("name").value.trim() || "मित्र";
+  const url = buildShareLink(name);
+  const msg = `✨ शुभ दीपावली ✨%0A${encodeURIComponent(name)} माँ लक्ष्मी के पावन पर्व की शुभकामनाएँ 🎉%0A${encodeURIComponent(url)}`;
+
+  document.getElementById("whatsapp").href = `https://wa.me/?text=${msg}`;
+  document.getElementById("telegram").href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent("✨ शुभ दीपावली ✨ " + name + " माँ लक्ष्मी के पावन पर्व की शुभकामनाएँ")}`;
+  document.getElementById("facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  document.getElementById("twitter").href = `https://twitter.com/intent/tweet?text=${encodeURIComponent("✨ शुभ दीपावली ✨ " + name + " माँ लक्ष्मी के पावन पर्व की शुभकामनाएँ")}&url=${encodeURIComponent(url)}`;
+  document.getElementById("downloadStory").href = '/navratri-story.jpg';
+}
+
+function toggleShare(){
+  const area = document.getElementById("shareArea");
+  const visible = area.style.display === "block";
+  area.style.display = visible ? "none" : "block";
+  if(!visible) updateLinks();
+}
+
+async function copyLink(){
+  const link = buildShareLink(document.getElementById("name").value.trim());
+  try{
+    await navigator.clipboard.writeText(link);
+    alert("Link copied — अब WhatsApp / Telegram पर paste करके भेजें!");
+  }catch(e){
+    const temp = document.createElement('textarea');
+    temp.value = link;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand('copy');
+    document.body.removeChild(temp);
+    alert("Link copied (fallback).");
+  }
+}
+
+document.getElementById("name").addEventListener('input', () => {
+  if(document.getElementById("shareArea").style.display === "block") updateLinks();
+});
+
+// Audio toggle
+const audio = document.getElementById('myAudio');
+const playBtn = document.getElementById('playBtn');
+let audioPlaying = false;
+function toggleAudio(){
+  if(!audioPlaying){
+    audio.muted = false;
+    audio.play().then(() => { audioPlaying = true; playBtn.textContent='⏸ Pause Music'; }).catch(err => { alert('Play blocked — tap again.'); });
+  } else { audio.pause(); audioPlaying=false; playBtn.textContent='▶ Play Music'; }
+}
+
+// Fireworks
+(function(){
+  const canvas = document.getElementById('fireworks');
+  const ctx = canvas.getContext('2d'); canvas.width=innerWidth; canvas.height=innerHeight;
+  window.addEventListener('resize',()=>{canvas.width=innerWidth;canvas.height=innerHeight;});
+  function random(min,max){return Math.random()*(max-min)+min;}
+  const particles=[];
+  class Particle{constructor(x,y,color){this.x=x;this.y=y;this.color=color;this.radius=random(1.5,3.6);this.alpha=1;this.angle=random(0,Math.PI*2);this.speed=random(1.8,6.5);}
+  update(i){this.x+=Math.cos(this.angle)*this.speed;this.y+=Math.sin(this.angle)*this.speed+0.4;this.alpha-=0.01;if(this.alpha<=0)particles.splice(i,1);}
+  draw(){ctx.save();ctx.globalAlpha=Math.max(0,this.alpha);ctx.fillStyle=this.color;ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fill();ctx.restore();}}
+  function explode(x,y){const colors=['#ff4d4d','#ffcc00','#00ffcc','#ff66ff','#00ff00'];const color=colors[Math.floor(Math.random()*colors.length)];for(let i=0;i<45;i++)particles.push(new Particle(x,y,color));}
+  setInterval(()=>{explode(random(60,canvas.width-60),random(80,canvas.height/2));},1400);
+  function loop(){ctx.fillStyle="rgba(0,0,0,0.18)";ctx.fillRect(0,0,canvas.width,canvas.height);for(let i=0;i<particles.length;i++){particles[i].update(i);particles[i].draw();}requestAnimationFrame(loop);}
+  loop();
+})();
+
+updateLinks();
+window.scrollTo({top:0,behavior:'instant'});
+
+// Service Worker registration
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(reg => { console.log('Service Worker Registered', reg); }).catch(err => { console.log('Service Worker registration failed: ', err); });
+}
+</script>
+
+</body>
+</html>
